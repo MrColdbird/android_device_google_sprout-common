@@ -1,0 +1,2 @@
+add_lunch_combo cm_k4000pro-userdebug
+add_lunch_combo cm_k4000pro-eng
