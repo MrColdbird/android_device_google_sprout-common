@@ -104,11 +104,6 @@ USE_CUSTOM_AUDIO_POLICY := 1
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.ril_class=SproutRIL
 
-# FM Radio
-PRODUCT_PACKAGES += \
-    FMRadioGoogle \
-    FmRadioTrampoline2
-
 # Wifi
  PRODUCT_PACKAGES += \
     libwpa_client \
@@ -136,12 +131,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     setup_fs \
     e2fsck \
-
-# Dynamically set props
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
-    ro.product.name \
-    ro.product.manufacturer \
-    ro.product.model
 	
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi

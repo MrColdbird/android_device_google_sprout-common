@@ -3,11 +3,12 @@ LOCAL_PATH := device/oukitel/k4000pro
 TARGET_BOARD_PLATFORM := mt6735m
 
 # arm64 Architecture
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT:= generic
+# We don't have blobs for this sadly...
+# TARGET_ARCH := arm64
+# TARGET_ARCH_VARIANT := armv8-a
+# TARGET_CPU_ABI := arm64-v8a
+# TARGET_CPU_ABI2 :=
+# TARGET_CPU_VARIANT:= generic
 
 # arm Architecture
 TARGET_2ND_ARCH := arm
