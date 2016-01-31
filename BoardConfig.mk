@@ -2,20 +2,12 @@ LOCAL_PATH := device/oukitel/k4000pro
 
 TARGET_BOARD_PLATFORM := mt6735m
 
-# arm64 Architecture
-# We don't have blobs for this sadly...
-# TARGET_ARCH := arm64
-# TARGET_ARCH_VARIANT := armv8-a
-# TARGET_CPU_ABI := arm64-v8a
-# TARGET_CPU_ABI2 :=
-# TARGET_CPU_VARIANT:= generic
-
-# arm Architecture
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT:= cortex-a7
+# Main Architecture (we don't have 64bit blobs, so we fall back to 32bit for now)
+TARGET_ARCH := arm
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_VARIANT:= cortex-a7
 
 # Mixed Mode Architecture
 ARCH_ARM_HAVE_VFP := true
