@@ -7,7 +7,7 @@ rild.libargs=-d /dev/ttyC0
 
 # MTK, Infinity, 20090720 {
 wifi.interface=wlan0
-ro.hardware=sprout
+ro.hardware=mt7635
 # MTK, Infinity, 20090720 }
 
 # MTK, mtk03034, 20101210 {
@@ -60,7 +60,7 @@ debug.hwui.render_dirty_regions=false
 
 ro.mediatek.chip_ver=S01
 ro.mediatek.version.release=ALPS.W10.24.p0
-ro.mediatek.platform=MT6582
+ro.mediatek.platform=MT6735
 ro.mediatek.version.sdk=1
 ro.telephony.sim.count=2
 persist.radio.default.sim=0
