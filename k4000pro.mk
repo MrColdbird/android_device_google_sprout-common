@@ -76,22 +76,23 @@ PRODUCT_COPY_FILES += \
 	
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/init.mt7635_common.rc:root/init.mt7635_common.rc \
-    $(LOCAL_PATH)/rootdir/root/sbin/multi_init:root/sbin/multi_init \
-    $(LOCAL_PATH)/rootdir/root/init.protect.rc:root/init.protect.rc \
-    $(LOCAL_PATH)/rootdir/root/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/root/factory_init.rc:root/factory_init.rc \
-    $(LOCAL_PATH)/rootdir/root/ueventd.mt7635.rc:root/ueventd.mt7635.rc \
-    $(LOCAL_PATH)/rootdir/root/init.mt7635.usb.rc:root/init.mt7635.usb.rc
+# Ramdisk
+PRODUCT_PACKAGES += \
+    factory_init.rc \
+    fstab.mt6735 \
+    init.modem.rc \
+    init.mt6735_common.rc \
+    init.mt6735.rc \
+    init.mt6735.usb.rc \
+    init.protect.rc \
+    twrp.fstab \
+    ueventd.mt6735.rc \
+    multi_init
 
 # Correct bootanimation size for the screen
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
-	
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/root/twrp.fstab:recovery/root/etc/twrp.fstab
-	
+
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
