@@ -1,6 +1,6 @@
-# sprout storage specific rc file.
+# k4000pro storage specific rc file.
 
-import /init.sprout_common.rc
+import /init.mt6735_common.rc
 
 on init
     # See storage config details at http://source.android.com/tech/storage/

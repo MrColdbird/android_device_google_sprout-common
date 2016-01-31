@@ -1,17 +1,16 @@
 # platform specific configuration items
-import /init.sprout_svelte.rc
-import /init.sprout.usb.rc
+import /init.mt6735_svelte.rc
+import /init.mt6735.usb.rc
 import /init.modem.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
-    setprop ro.mtk.hardware mt6582
+    setprop ro.mtk.hardware mt6735
 
 on init
     export LD_PRELOAD /system/lib/libsprout.so
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
-
 
     # Change ION driver permission
     chmod 0666 /dev/ion
@@ -24,7 +23,7 @@ on init
 
 on fs
     write /proc/bootprof "INIT:eMMC:Mount_All_START"
-    mount_all /fstab.sprout
+    mount_all /fstab.mt6735
     write /proc/bootprof "INIT:eMMC:Mount_All_END"
 
 # mount different fs end
