@@ -1,6 +1,6 @@
 LOCAL_PATH := device/oukitel/k4000pro
 
-TARGET_BOARD_PLATFORM := mt6735m
+TARGET_BOARD_PLATFORM := mt6735
 
 # Main Architecture (we don't have 64bit blobs, so we fall back to 32bit for now)
 TARGET_ARCH := arm
