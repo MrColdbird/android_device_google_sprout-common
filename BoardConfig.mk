@@ -90,7 +90,7 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 TARGET_USERIMAGES_USE_F2FS := true
 
-PRODUCT_COPY_FILES += device/zuk/ham/twrp.fstab:recovery/root/etc/twrp.fstab
+PRODUCT_COPY_FILES += device/oukitel/k4000pro/twrp.fstab:recovery/root/etc/twrp.fstab
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
