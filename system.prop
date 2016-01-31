@@ -7,7 +7,7 @@ rild.libargs=-d /dev/ttyC0
 
 # MTK, Infinity, 20090720 {
 wifi.interface=wlan0
-ro.hardware=mt7635
+ro.hardware=mt6735
 # MTK, Infinity, 20090720 }
 
 # MTK, mtk03034, 20101210 {
