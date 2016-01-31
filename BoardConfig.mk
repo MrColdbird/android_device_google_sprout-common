@@ -28,8 +28,9 @@ BOARD_FLASH_BLOCK_SIZE := 0x20000
 # kernel stuff
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 # We don't have kernel source just yet...
-# TARGET_KERNEL_SOURCE := kernel/mediatek/k4000pro
-# TARGET_KERNEL_CONFIG := cyanogenmod_k4000pro_defconfig
+# We need to leave this activated though as to not break other components.
+TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
+TARGET_KERNEL_CONFIG := cyanogenmod_sprout_defconfig
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000
 BOARD_KERNEL_BASE := 0x40000000
