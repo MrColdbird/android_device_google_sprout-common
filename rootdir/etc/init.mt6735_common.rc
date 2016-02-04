@@ -12,6 +12,84 @@ on init
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
 
+    symlink target newname
+
+    # Horrible hack to make things work on the precompiled kernel
+    mkdir /dev/block/platform/mtk-msdc.0/by-name 0755 root root
+    mkdir /dev/block/platform/mtk-msdc.0/by-num 0755 root root
+    symlink /dev/block/mmcblk0p1 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    symlink /dev/block/mmcblk0p2 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    symlink /dev/block/mmcblk0p3 /dev/block/platform/mtk-msdc.0/by-name/protect1
+    symlink /dev/block/mmcblk0p4 /dev/block/platform/mtk-msdc.0/by-name/protect2
+    symlink /dev/block/mmcblk0p5 /dev/block/platform/mtk-msdc.0/by-name/lk
+    symlink /dev/block/mmcblk0p6 /dev/block/platform/mtk-msdc.0/by-name/para
+    symlink /dev/block/mmcblk0p7 /dev/block/platform/mtk-msdc.0/by-name/boot
+    symlink /dev/block/mmcblk0p8 /dev/block/platform/mtk-msdc.0/by-name/recovery
+    symlink /dev/block/mmcblk0p9 /dev/block/platform/mtk-msdc.0/by-name/logo
+    symlink /dev/block/mmcblk0p10 /dev/block/platform/mtk-msdc.0/by-name/expdb
+    symlink /dev/block/mmcblk0p11 /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    symlink /dev/block/mmcblk0p12 /dev/block/platform/mtk-msdc.0/by-name/oemkeystore
+    symlink /dev/block/mmcblk0p13 /dev/block/platform/mtk-msdc.0/by-name/secro
+    symlink /dev/block/mmcblk0p14 /dev/block/platform/mtk-msdc.0/by-name/keystore
+    symlink /dev/block/mmcblk0p15 /dev/block/platform/mtk-msdc.0/by-name/tee1
+    symlink /dev/block/mmcblk0p16 /dev/block/platform/mtk-msdc.0/by-name/tee2
+    symlink /dev/block/mmcblk0p17 /dev/block/platform/mtk-msdc.0/by-name/frp
+    symlink /dev/block/mmcblk0p18 /dev/block/platform/mtk-msdc.0/by-name/nvdata
+    symlink /dev/block/mmcblk0p19 /dev/block/platform/mtk-msdc.0/by-name/metadata
+    symlink /dev/block/mmcblk0p20 /dev/block/platform/mtk-msdc.0/by-name/system
+    symlink /dev/block/mmcblk0p21 /dev/block/platform/mtk-msdc.0/by-name/cache
+    symlink /dev/block/mmcblk0p22 /dev/block/platform/mtk-msdc.0/by-name/userdata
+    symlink /dev/block/mmcblk0p23 /dev/block/platform/mtk-msdc.0/by-name/flashinfo
+    symlink /dev/block/mmcblk0p1 /dev/block/platform/mtk-msdc.0/by-num/p1
+    symlink /dev/block/mmcblk0p2 /dev/block/platform/mtk-msdc.0/by-num/p2
+    symlink /dev/block/mmcblk0p3 /dev/block/platform/mtk-msdc.0/by-num/p3
+    symlink /dev/block/mmcblk0p4 /dev/block/platform/mtk-msdc.0/by-num/p4
+    symlink /dev/block/mmcblk0p5 /dev/block/platform/mtk-msdc.0/by-num/p5
+    symlink /dev/block/mmcblk0p6 /dev/block/platform/mtk-msdc.0/by-num/p6
+    symlink /dev/block/mmcblk0p7 /dev/block/platform/mtk-msdc.0/by-num/p7
+    symlink /dev/block/mmcblk0p8 /dev/block/platform/mtk-msdc.0/by-num/p8
+    symlink /dev/block/mmcblk0p9 /dev/block/platform/mtk-msdc.0/by-num/p9
+    symlink /dev/block/mmcblk0p10 /dev/block/platform/mtk-msdc.0/by-num/p10
+    symlink /dev/block/mmcblk0p11 /dev/block/platform/mtk-msdc.0/by-num/p11
+    symlink /dev/block/mmcblk0p12 /dev/block/platform/mtk-msdc.0/by-num/p12
+    symlink /dev/block/mmcblk0p13 /dev/block/platform/mtk-msdc.0/by-num/p13
+    symlink /dev/block/mmcblk0p14 /dev/block/platform/mtk-msdc.0/by-num/p14
+    symlink /dev/block/mmcblk0p15 /dev/block/platform/mtk-msdc.0/by-num/p15
+    symlink /dev/block/mmcblk0p16 /dev/block/platform/mtk-msdc.0/by-num/p16
+    symlink /dev/block/mmcblk0p17 /dev/block/platform/mtk-msdc.0/by-num/p17
+    symlink /dev/block/mmcblk0p18 /dev/block/platform/mtk-msdc.0/by-num/p18
+    symlink /dev/block/mmcblk0p19 /dev/block/platform/mtk-msdc.0/by-num/p19
+    symlink /dev/block/mmcblk0p20 /dev/block/platform/mtk-msdc.0/by-num/p20
+    symlink /dev/block/mmcblk0p21 /dev/block/platform/mtk-msdc.0/by-num/p21
+    symlink /dev/block/mmcblk0p22 /dev/block/platform/mtk-msdc.0/by-num/p22
+    symlink /dev/block/mmcblk0p23 /dev/block/platform/mtk-msdc.0/by-num/p23
+    symlink /dev/block/mmcblk0 /dev/block/platform/mtk-msdc.0/mmcblk0
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/mtk-msdc.0/mmcblk0boot0
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/mtk-msdc.0/mmcblk0boot1
+    symlink /dev/block/mmcblk0p1 /dev/block/platform/mtk-msdc.0/mmcblk0p1
+    symlink /dev/block/mmcblk0p2 /dev/block/platform/mtk-msdc.0/mmcblk0p2
+    symlink /dev/block/mmcblk0p3 /dev/block/platform/mtk-msdc.0/mmcblk0p3
+    symlink /dev/block/mmcblk0p4 /dev/block/platform/mtk-msdc.0/mmcblk0p4
+    symlink /dev/block/mmcblk0p5 /dev/block/platform/mtk-msdc.0/mmcblk0p5
+    symlink /dev/block/mmcblk0p6 /dev/block/platform/mtk-msdc.0/mmcblk0p6
+    symlink /dev/block/mmcblk0p7 /dev/block/platform/mtk-msdc.0/mmcblk0p7
+    symlink /dev/block/mmcblk0p8 /dev/block/platform/mtk-msdc.0/mmcblk0p8
+    symlink /dev/block/mmcblk0p9 /dev/block/platform/mtk-msdc.0/mmcblk0p9
+    symlink /dev/block/mmcblk0p10 /dev/block/platform/mtk-msdc.0/mmcblk0p10
+    symlink /dev/block/mmcblk0p11 /dev/block/platform/mtk-msdc.0/mmcblk0p11
+    symlink /dev/block/mmcblk0p12 /dev/block/platform/mtk-msdc.0/mmcblk0p12
+    symlink /dev/block/mmcblk0p13 /dev/block/platform/mtk-msdc.0/mmcblk0p13
+    symlink /dev/block/mmcblk0p14 /dev/block/platform/mtk-msdc.0/mmcblk0p14
+    symlink /dev/block/mmcblk0p15 /dev/block/platform/mtk-msdc.0/mmcblk0p15
+    symlink /dev/block/mmcblk0p16 /dev/block/platform/mtk-msdc.0/mmcblk0p16
+    symlink /dev/block/mmcblk0p17 /dev/block/platform/mtk-msdc.0/mmcblk0p17
+    symlink /dev/block/mmcblk0p18 /dev/block/platform/mtk-msdc.0/mmcblk0p18
+    symlink /dev/block/mmcblk0p19 /dev/block/platform/mtk-msdc.0/mmcblk0p19
+    symlink /dev/block/mmcblk0p20 /dev/block/platform/mtk-msdc.0/mmcblk0p20
+    symlink /dev/block/mmcblk0p21 /dev/block/platform/mtk-msdc.0/mmcblk0p21
+    symlink /dev/block/mmcblk0p22 /dev/block/platform/mtk-msdc.0/mmcblk0p22
+    symlink /dev/block/mmcblk0p23 /dev/block/platform/mtk-msdc.0/mmcblk0p23
+
     # Change ION driver permission
     chmod 0666 /dev/ion
 
