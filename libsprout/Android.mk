@@ -16,9 +16,10 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    sprout_ril.cpp
+    sprout_ril.cpp \
+    icu53.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder
+LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n
 LOCAL_MODULE := libsprout
 LOCAL_MODULE_TAGS := optional
 
