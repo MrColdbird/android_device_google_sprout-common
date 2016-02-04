@@ -29,10 +29,13 @@ BOARD_FLASH_BLOCK_SIZE := 0x20000
 # kernel stuff
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 # We don't have kernel source just yet...
-# TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
-# TARGET_KERNEL_CONFIG := cyanogenmod_sprout_defconfig
+# But we need a fitting dummy to compile stuff like tinyalsa.
+# The sprout kernel will do for now, as it's the closest we have to the actual thing.
+TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
+TARGET_KERNEL_CONFIG := cyanogenmod_sprout_defconfig
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=disabled selinux=0
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000
+# To ensure we actually get the precompiled kernel though after compilation, we override the kernel path here.
+BOARD_MKBOOTIMG_ARGS := --kernel $(TARGET_PREBUILT_KERNEL) --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000
 BOARD_KERNEL_BASE := 0x40000000
 BOARD_KERNEL_PAGESIZE := 2048
 
