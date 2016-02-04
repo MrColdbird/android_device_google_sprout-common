@@ -28,9 +28,8 @@ BOARD_FLASH_BLOCK_SIZE := 0x20000
 # kernel stuff
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 # We don't have kernel source just yet...
-# We need to leave this activated though as to not break other components.
-TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
-TARGET_KERNEL_CONFIG := cyanogenmod_sprout_defconfig
+# TARGET_KERNEL_SOURCE := kernel/mediatek/sprout
+# TARGET_KERNEL_CONFIG := cyanogenmod_sprout_defconfig
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,32N2 androidboot.selinux=disabled selinux=0
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x04000000 --tags_offset 0x0e000000
 BOARD_KERNEL_BASE := 0x40000000
@@ -55,6 +54,7 @@ TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,noatime,discard,noauto_da_alloc,data=order
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := true
+PRODUCT_COPY_FILES += device/oukitel/k4000pro/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # OpenGL
 USE_OPENGL_RENDERER:= true
@@ -78,20 +78,6 @@ DEVICE_RESOLUTION := 720x1280
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
-
-# TWRP
-DEVICE_RESOLUTION := 720x1280
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TW_TARGET_USES_QCOM_BSP := true
-TW_NO_USB_STORAGE := true
-TW_INCLUDE_CRYPTO := true
-BOARD_SUPPRESS_SECURE_ERASE := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-TARGET_USERIMAGES_USE_F2FS := true
-
-PRODUCT_COPY_FILES += device/oukitel/k4000pro/twrp.fstab:recovery/root/etc/twrp.fstab
 
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 
