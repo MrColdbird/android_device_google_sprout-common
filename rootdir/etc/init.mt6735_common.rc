@@ -5,7 +5,7 @@ import /init.modem.rc
 
 on early-init
     mount debugfs /sys/kernel/debug /sys/kernel/debug
-    setprop ro.mtk.hardware mt6735
+    setprop ro.mtk.hardware mt6735m
 
 on init
     export LD_PRELOAD /system/lib/libsprout.so
