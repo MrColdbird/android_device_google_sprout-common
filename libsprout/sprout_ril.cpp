@@ -15,6 +15,7 @@
  */
 
 extern "C" void RIL_register_socket() {}
+extern "C" void __xlog_buf_printf() {}
 
 /* status_t Parcel::writeString16 */
 extern "C" int _ZN7android6Parcel13writeString16EPKDsj();
