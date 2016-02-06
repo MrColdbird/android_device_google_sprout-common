@@ -59,9 +59,14 @@ ro.boot.selinux=disable
 debug.hwui.render_dirty_regions=false
 
 ro.mediatek.chip_ver=S01
-ro.mediatek.version.release=ALPS.W10.24.p0
+ro.mediatek.version.release=OUKITEL_K4000_PRO_V4.0_20160106
 ro.mediatek.platform=MT6735
-ro.mediatek.version.sdk=1
+ro.mediatek.version.sdk=4
+ro.mediatek.gemini_support=true
+mediatek.wlan.chip=CONSYS_MT6735
+mediatek.wlan.module.postfix=_consys_mt6735
+ro.mediatek.version.branch=L1.MP3
+ro.mtk_wlan_support=1
 ro.telephony.sim.count=2
 persist.radio.default.sim=0
 persist.radio.multisim.config=dsds
