@@ -188,6 +188,10 @@ on post-fs-data
 # GPS
     mkdir /data/gps_mnl 0771 gps system
     mkdir /data/misc/gps 0770 gps system
+
+    # NFC
+    mkdir /data/nfc_socket 0771 nfc radio
+
 # -----------------------
 # Add by MTK
 
@@ -237,6 +241,14 @@ on post-fs-data
     #insmod /system/lib/modules/m4u.ko
     chmod 0440 /dev/M4U_device
     chown system camera /dev/M4U_device
+
+    # CMDQ
+    chmod 0640 /dev/mtk_cmdq
+    chown system system /dev/mtk_cmdq
+
+    #OFFLOAD SERVICE
+    chmod 0640 /dev/offloadservice
+    chown media media /dev/offloadservice
 
     # Start sensor
     chmod 0660 /dev/hwmsensor
