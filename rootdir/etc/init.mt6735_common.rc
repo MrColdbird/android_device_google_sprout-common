@@ -502,7 +502,45 @@ on post-fs-data
     chmod 666 /dev/mali
     chown system graphics /dev/mali
 
+    #BT SCO CVSD, for MT6572 and MT6582 CVSD codec on AP
+    chmod 0660 /dev/ebc
+    chown system media /dev/ebc
 
+    chmod 0666 /dev/uio0
+
+    #otp
+    chmod 0660 /proc/driver/otp
+    chown root system /proc/driver/otp
+
+    #autok
+    chown root system /sys/autok/debug
+    chown root system /sys/autok/param_count
+    chown root system /sys/autok/ready
+    chown root system /sys/autok/ss_corner
+    chown root system /sys/autok/suggest_vol
+    chown root system /sys/autok/stage1/2/DONE
+    chown root system /sys/autok/stage1/2/PARAMS
+    chown root system /sys/autok/stage1/2/VOLTAGE
+    chown root system /sys/autok/stage1/2/LOG
+    chown root system /sys/autok/stage2/2
+
+    #sn
+    chmod 0664 /sys/class/android_usb/android0/iSerial
+    chown root system /sys/class/android_usb/android0/iSerial
+    chmod 0664 /sys/devices/platform/mt_usb/cmode
+    chown root system /sys/devices/platform/mt_usb/cmode
+
+    # secure memory
+    chown system system /proc/secmem0
+
+    # mcDriverDaemon
+    mkdir /data/app/mcRegistry 0770 system system
+    mkdir /data/app/mcRegistry/TbStorage 0770 system system
+
+    # AGPS
+    mkdir /data/agps_supl 0771 gps system
+
+    chmod 0666 /dev/exm0
 
     #sbchk
     mkdir /data/sec 0750 system system
@@ -769,6 +807,12 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+
+# For WiFi High Speed calibration
+service autokd /system/bin/autokd
+    class core
+    user system
+    group system
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -A -BK -dd
     class main
