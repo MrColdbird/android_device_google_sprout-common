@@ -17,6 +17,7 @@ include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
     sprout_ril.cpp \
+    hwcomposer.cpp \
     icu53.cpp \
     crypto_malloc.cpp
 
