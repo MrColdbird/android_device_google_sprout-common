@@ -21,7 +21,7 @@ LOCAL_SRC_FILES := \
     icu53.cpp \
     crypto_malloc.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n libcutils
+LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n libui libcutils
 LOCAL_MODULE := libsprout
 LOCAL_MODULE_TAGS := optional
 
