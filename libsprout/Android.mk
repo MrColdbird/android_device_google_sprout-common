@@ -26,6 +26,7 @@ LOCAL_SHARED_LIBRARIES := \
     libbinder \
     libicuuc \
     libicui18n \
+    libgui \
     libui \
     libcutils \
     libstagefright_foundation
