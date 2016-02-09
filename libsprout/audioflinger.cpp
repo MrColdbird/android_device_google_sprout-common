@@ -5,3 +5,7 @@ extern "C" int _ZN7android11AudioSystem12SetAudioDataEijPv() {
 extern "C" int _ZN7android11AudioSystem15SetAudioCommandEii() {
     return 0;
 }
+
+extern "C" int _ZN7android11AudioSystem15GetAudioCommandEiPi() {
+    return 0;
+}
