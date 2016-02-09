@@ -18,11 +18,10 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := \
     sprout_ril.cpp \
     hwcomposer.cpp \
-    stagefright.cpp \
     icu53.cpp \
     crypto_malloc.cpp
 
-LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n libui libcutils libstagefright
+LOCAL_SHARED_LIBRARIES := libbinder libicuuc libicui18n libui libcutils
 LOCAL_MODULE := libsprout
 LOCAL_MODULE_TAGS := optional
 
