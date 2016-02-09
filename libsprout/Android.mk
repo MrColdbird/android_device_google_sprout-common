@@ -19,7 +19,6 @@ LOCAL_SRC_FILES := \
     sprout_ril.cpp \
     hwcomposer.cpp \
     stagefright.cpp \
-    audioflinger.cpp \
     icu53.cpp \
     crypto_malloc.cpp
 
