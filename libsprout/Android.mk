@@ -29,6 +29,7 @@ LOCAL_SHARED_LIBRARIES := \
     libicui18n \
     libgui \
     libui \
+    libmedia \
     libcutils \
     libstagefright_foundation
 
