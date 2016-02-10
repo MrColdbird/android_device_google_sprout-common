@@ -71,7 +71,7 @@ extern "C" int ifc_netd_sock_init(void)
             return -1;
         }
   
-    if (DBG) ALOGD("ifc_netd_sock_init fd=%d", ifc_netd_sock);
+    ALOGD("ifc_netd_sock_init fd=%d", ifc_netd_sock);
     return ifc_netd_sock;
 }
 
