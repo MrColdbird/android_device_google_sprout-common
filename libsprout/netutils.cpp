@@ -43,9 +43,6 @@
 #define SIOCSTXQSTATE (SIOCDEVPRIVATE + 0)  //start/stop ccmni tx queue
 #define SIOCSCCMNICFG (SIOCDEVPRIVATE + 1)  //configure ccmni/md remapping
 
-void printerr(char *fmt, ...);
-#define DBG 0
-
 extern "C" void ifc_init_ifr(const char *name, struct ifreq *ifr);
 
 extern "C" int ifc_netd_sock_init(void)
@@ -56,7 +53,7 @@ extern "C" int ifc_netd_sock_init(void)
   
         ifc_netd_sock = socket(AF_UNIX, SOCK_STREAM, 0);
         if (ifc_netd_sock < 0) {
-            printerr("ifc_netd_sock_init: create socket failed");
+            ALOGD("ifc_netd_sock_init: create socket failed");
             return -1;
         }
   
@@ -68,13 +65,13 @@ extern "C" int ifc_netd_sock_init(void)
         if (TEMP_FAILURE_RETRY(connect(ifc_netd_sock,
                      (const struct sockaddr*) &netd_addr,
                      sizeof(netd_addr))) != 0) {
-            printerr("ifc_netd_sock_init: connect to netd failed, fd=%d, err: %d(%s)", 
+            ALOGD("ifc_netd_sock_init: connect to netd failed, fd=%d, err: %d(%s)", 
                 ifc_netd_sock, errno, strerror(errno));
             close(ifc_netd_sock);
             return -1;
         }
   
-    if (DBG) printerr("ifc_netd_sock_init fd=%d", ifc_netd_sock);
+    if (DBG) ALOGD("ifc_netd_sock_init fd=%d", ifc_netd_sock);
     return ifc_netd_sock;
 }
 
@@ -183,16 +180,16 @@ extern "C" int ifc_ccmni_md_cfg(const char *ifname, int md_id)
 
     ctl_sock = socket(AF_INET, SOCK_DGRAM, 0);
     if(ctl_sock < 0){
-    	printerr("ifc_ccmni_md_cfg: create ctl socket failed\n");
+    	ALOGD("ifc_ccmni_md_cfg: create ctl socket failed\n");
     	return -1;
     }
 		
     if(ioctl(ctl_sock, SIOCSCCMNICFG, &ifr) < 0) {
-    	printerr("ifc_ccmni_md_configure(ifname=%s, md_id=%d) error:%d(%s)", \
+    	ALOGD("ifc_ccmni_md_configure(ifname=%s, md_id=%d) error:%d(%s)", \
         	ifname, md_id, errno, strerror(errno));
     	ret = -1;
     } else {
-    	printerr("ifc_ccmni_md_configure(ifname=%s, md_id=%d) OK", ifname, md_id);
+    	ALOGD("ifc_ccmni_md_configure(ifname=%s, md_id=%d) OK", ifname, md_id);
     }
     
     close(ctl_sock);
