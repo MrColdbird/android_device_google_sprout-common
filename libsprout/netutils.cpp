@@ -43,7 +43,12 @@
 #define SIOCSTXQSTATE (SIOCDEVPRIVATE + 0)  //start/stop ccmni tx queue
 #define SIOCSCCMNICFG (SIOCDEVPRIVATE + 1)  //configure ccmni/md remapping
 
-static int ifc_netd_sock_init(void)
+void printerr(char *fmt, ...);
+#define DBG 0
+
+extern "C" void ifc_init_ifr(const char *name, struct ifreq *ifr);
+
+extern "C" int ifc_netd_sock_init(void)
 {
     int ifc_netd_sock;
     const int one = 1;
@@ -74,7 +79,7 @@ static int ifc_netd_sock_init(void)
 }
 
 /*do not call this function in netd*/
-int ifc_set_throttle(const char *ifname, int rxKbps, int txKbps)
+extern "C" int ifc_set_throttle(const char *ifname, int rxKbps, int txKbps)
 {
     FILE* fnetd = NULL;
     int ret = -1;
