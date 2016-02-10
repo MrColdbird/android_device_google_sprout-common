@@ -12,8 +12,6 @@ on init
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
 
-    symlink target newname
-
     # Horrible hack to make things work on the precompiled kernel
     mkdir /dev/block/platform/mtk-msdc.0/by-name 0755 root root
     mkdir /dev/block/platform/mtk-msdc.0/by-num 0755 root root
