@@ -174,6 +174,32 @@ exit:
     return ret;
 }
 
+extern "C" int ifc_set_txq_state(const char *ifname, int state)
+{
+    struct ifreq ifr;
+    int ret, ctl_sock;
+    
+    memset(&ifr, 0, sizeof(struct ifreq));
+    strncpy(ifr.ifr_name, ifname, IFNAMSIZ);
+    ifr.ifr_name[IFNAMSIZ - 1] = 0;
+    ifr.ifr_ifru.ifru_ivalue = state;
+    
+    ctl_sock = socket(AF_INET, SOCK_DGRAM, 0);
+    if(ctl_sock < 0){
+    	ALOGE("create ctl socket failed\n");
+    	return -1;
+    }
+    ret = ioctl(ctl_sock, SIOCSTXQSTATE, &ifr);
+    if(ret < 0)
+    	ALOGE("ifc_set_txq_state failed, err:%d(%s)\n", errno, strerror(errno));
+    else
+    	ALOGI("ifc_set_txq_state as %d, ret: %d\n", state, ret);
+    
+    close(ctl_sock);
+    
+    return ret;
+}
+
 extern "C" int ifc_ccmni_md_cfg(const char *ifname, int md_id)
 {
     struct ifreq ifr;
