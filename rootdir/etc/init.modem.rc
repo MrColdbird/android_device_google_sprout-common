@@ -107,3 +107,16 @@ service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
 #  Modem related services (End)
 #
 
+#Add by hp.chen for
+#
+#   Telephony Early Read service
+#
+service terservice /system/bin/terservice
+    class core
+    user radio
+    group radio cache inet misc
+    oneshot
+
+on property:ril.muxreport=1
+    start muxreport-daemon
+
