@@ -43,7 +43,12 @@
 #define SIOCSTXQSTATE (SIOCDEVPRIVATE + 0)  //start/stop ccmni tx queue
 #define SIOCSCCMNICFG (SIOCDEVPRIVATE + 1)  //configure ccmni/md remapping
 
-extern "C" void ifc_init_ifr(const char *name, struct ifreq *ifr);
+extern "C" static void ifc_init_ifr(const char *name, struct ifreq *ifr)
+{
+    memset(ifr, 0, sizeof(struct ifreq));
+    strncpy(ifr->ifr_name, name, IFNAMSIZ);
+    ifr->ifr_name[IFNAMSIZ - 1] = 0;
+}
 
 extern "C" int ifc_netd_sock_init(void)
 {
