@@ -857,6 +857,13 @@ service pq /system/bin/pq
     group system graphics
     oneshot
 
+# monitor property and power on/off wlan
+on property:wlan.driver.status=ok
+    write /dev/wmtWifi "1"
+
+on property:wlan.driver.status=unloaded
+    write /dev/wmtWifi "0"
+
 #remove -puse_p2p_group_interface=1, our driver doesnot support this feature
 #
 service p2p_supplicant /system/bin/wpa_supplicant \
