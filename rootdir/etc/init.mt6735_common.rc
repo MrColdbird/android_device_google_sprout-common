@@ -609,7 +609,7 @@ on boot
     chown root system /sys/module/page_alloc/parameters/log_order_threshold
     chmod 0664 /sys/module/page_alloc/parameters/log_order_threshold
 
-     # Tweak background writeout
+    # Tweak background writeout
     write /proc/sys/vm/dirty_writeback_centisecs 300
 
     chmod 0660 /sys/power/autosleep
@@ -618,8 +618,9 @@ on boot
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
-    chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
-    chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
+
+    chown system /sys/module/mlog/parameters/do_mlog
+    chown system /sys/module/mlog/parameters/timer_intval
 
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 
@@ -641,37 +642,66 @@ on boot
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
 
-# AGPS
+    # Smartbook Handler Framework
+    chown system system /sys/power/sb_state
+    chmod 0660 /sys/power/sb_state
+
+    # HMP CPU hotplug strategy
+    chown system system /proc/hps/num_base_perf_serv
+    chmod 0660 /proc/hps/num_base_perf_serv
+    chown system system /proc/hps/num_limit_power_serv
+    chmod 0660 /proc/hps/num_limit_power_serv
+    chown system system /proc/hps/num_limit_ultra_power_saving
+    chmod 0660 /proc/hps/num_limit_ultra_power_saving
+    chown system system /proc/hps/down_threshold
+    chmod 0660 /proc/hps/down_threshold
+    chown system system /proc/hps/up_threshold
+    chmod 0660 /proc/hps/up_threshold
+
+    # CPU freq
+    chown system system /proc/cpufreq/cpufreq_limited_by_hevc
+    chmod 0660 /proc/cpufreq/cpufreq_limited_by_hevc
+    chown system system /proc/cpufreq/cpufreq_limited_max_freq_by_user
+    chmod 0660 /proc/cpufreq/cpufreq_limited_max_freq_by_user
+
+    chown system system /d/ged/hal/total_gpu_freq_level_count
+    chmod 0660 /d/ged/hal/total_gpu_freq_level_count
+    chown system system /d/ged/hal/custom_boost_gpu_freq
+    chmod 0660 /d/ged/hal/custom_boost_gpu_freq
+    chown system system /d/ged/hal/custom_upbound_gpu_freq
+    chmod 0660 /d/ged/hal/custom_upbound_gpu_freq
+
+    # AGPS
     mkdir /data/agps_supl 0771 gps system
 
-## Thermal
-  #change permissions on thermal devices
-  chown root system /proc/mtktscpu/mtktscpu
-  chmod 0660 /proc/mtktscpu/mtktscpu
-  chown root system /proc/mtktsabb/mtktsabb
-  chmod 0660 /proc/mtktsabb/mtktsabb
-  chown root system /proc/mtktscpu/mtktscpu_cooler
-  chmod 0660 /proc/mtktscpu/mtktscpu_cooler
-  chown root system /proc/mtktsbattery/mtktsbattery
-  chmod 0660 /proc/mtktsbattery/mtktsbattery
-  chown root system /proc/mtktspa/mtktspa
-  chmod 0660 /proc/mtktspa/mtktspa
-  chown root system /proc/mtktspmic/mtktspmic
-  chmod 0660 /proc/mtktspmic/mtktspmic
-  chown root system /proc/driver/mtk_thermal_monitor
-  chmod 0660 /proc/driver/mtk_thermal_monitor
-  chown root radio /proc/driver/mtm_scen_call
-  chmod 0660 /proc/driver/mtm_scen_call
-  chown system system /proc/driver/mtk_cl_sd_pid
-  chmod 0660 /proc/driver/mtk_cl_sd_pid
-  chown root system /proc/wmt_tm/wmt_tm
-  chown system system /proc/wmt_tm/tm_pid
-  chown system system /proc/wmt_tm/tx_thro
-  chown system system /proc/wmt_tm/wmt_val
-  chown system system /proc/wmt_tm/wfd_stat
+    # Thermal
+    # change permissions on thermal devices
+    chown root system /proc/mtktscpu/mtktscpu
+    chmod 0660 /proc/mtktscpu/mtktscpu
+    chown root system /proc/mtktsabb/mtktsabb
+    chmod 0660 /proc/mtktsabb/mtktsabb
+    chown root system /proc/mtktscpu/mtktscpu_cooler
+    chmod 0660 /proc/mtktscpu/mtktscpu_cooler
+    chown root system /proc/mtktsbattery/mtktsbattery
+    chmod 0660 /proc/mtktsbattery/mtktsbattery
+    chown root system /proc/mtktspa/mtktspa
+    chmod 0660 /proc/mtktspa/mtktspa
+    chown root system /proc/mtktspmic/mtktspmic
+    chmod 0660 /proc/mtktspmic/mtktspmic
+    chown root system /proc/driver/mtk_thermal_monitor
+    chmod 0660 /proc/driver/mtk_thermal_monitor
+    chown root radio /proc/driver/mtm_scen_call
+    chmod 0660 /proc/driver/mtm_scen_call
+    chown system system /proc/driver/mtk_cl_sd_pid
+    chmod 0660 /proc/driver/mtk_cl_sd_pid
+    chown root system /proc/wmt_tm/wmt_tm
+    chown system system /proc/wmt_tm/tm_pid
+    chown system system /proc/wmt_tm/tx_thro
+    chown system system /proc/wmt_tm/wmt_val
+    chown system system /proc/wmt_tm/wfd_stat
 
-##Netlog tool
-   #change permissions about terminal
+    # Netlog tool
+    # change permissions about terminal
     chown root radio /proc/net/vlan/config
     chmod 0640 /proc/net/vlan/config
     chown root radio /proc/net/ip6_tables_matches
@@ -693,15 +723,21 @@ on boot
     chown radio system /proc/cpufreq/cpufreq_cur_freq
     chown radio system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 
-# WMT proc
+    # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
 
-#Define device for ATCID
+    # Define device for ATCID
     chmod 660 /dev/ttyGS0
     chown system /dev/ttyGS0
     chmod 660 /dev/ttyGS1
     chown system /dev/ttyGS1
+
+    # define device for EMCSMDLOGGER
+    chown system radio /dev/ttyGS3
+    chmod 0660 /dev/ttyGS3
+
+
 
     class_start default
 
@@ -712,17 +748,24 @@ on property:ro.build.type=userdebug
 
 on property:vold.decrypt=trigger_reset_main
     start stop_modem
+    write /proc/bootprof "trigger_reset_main"
 
 on property:vold.decrypt=trigger_restart_min_framework
     start start_modem
+    start msensord
+    start permission_check
+    write /proc/bootprof "trigger_restart_min_framework"
 
 on property:vold.decrypt=trigger_restart_framework
     start nvram_daemon
     start start_modem
     start msensord
+    start permission_check
+    write /proc/bootprof "trigger_restart_framework"
 
 on property:vold.decrypt=trigger_shutdown_framework
     start stop_modem
+    write /proc/bootprof "trigger_shutdown_framework"
 
 service stop_modem /system/bin/md_ctrl 0
     class main
@@ -733,6 +776,21 @@ service start_modem /system/bin/md_ctrl 1
     class main
     disabled
     oneshot
+    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,524288
+    setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
+    setprop net.tcp.buffersize.umts    4094,87380,524288,4096,16384,524288
+    setprop net.tcp.buffersize.hspa    4094,87380,524288,4096,16384,524288
+    setprop net.tcp.buffersize.hsupa   4094,87380,524288,4096,16384,524288
+    setprop net.tcp.buffersize.hsdpa   4094,87380,524288,4096,16384,524288
+    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
+    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
+    setprop persist.sys.strictmode.disable 1
+
+## mtk printk uart controller
+on property:persist.uartconsole.enable=1
+    write /proc/mtprintk 1
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
@@ -756,38 +814,40 @@ service nvram_daemon /system/bin/nvram_daemon
     oneshot
 
 service atci_service /system/bin/atci_service
+    class core
     socket atci-service stream 660 radio system
     socket atci-serv-fw stream 660 radio system
     user root
     disabled
     group radio system
+
 service atcid-daemon-u /system/bin/atcid
+    class main
+    socket adb_atci_socket stream 660 radio system
     user system
     group radio system media
     disabled
     oneshot
 
 service atcid-daemon-e /system/bin/atcid
+    class core
+    socket adb_atci_socket stream 660 radio system
     user root
     group radio system
     disabled
     oneshot
 
-on early_property:ro.build.type=eng
+on property:persist.service.atci.usermode=1
+    setprop persist.sys.usb.config mass_storage,adb,acm
+
+on property:ro.build.type=eng
 start atci_service
 start atcid-daemon-e
+
 service audio-daemon /system/bin/audiocmdservice_atci
     class main
     socket atci-audio stream 660 root system
     user root
-    disabled
-    oneshot
-
-service insmod insmod
-    disabled
-    oneshot
-
-service rmmod rmmod
     disabled
     oneshot
 
