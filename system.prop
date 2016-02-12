@@ -81,6 +81,8 @@ ril.external.md=0
 ro.sf.hwrotation=0
 ril.current.share_modem=2
 ril.radiooff.poweroffMD=0
+ril.read.imsi=1
+ro.mtk_rild_read_imsi=1
 
 # OEM props
 import /oem/oem.prop ro.product.name
