@@ -127,15 +127,6 @@ on fs
 # mount different fs end
 
 on post-fs
-
-    # change sbchk permission before mounted as read-only
-    chown system system /sbchk
-    chown system system /sbchk/sbchk
-    chown system system /sbchk/sec_chk.sh
-    chmod 750 /sbchk
-    chmod 750 /sbchk/sbchk
-    chmod 750 /sbchk/sec_chk.sh
-
     chown system system /protect_f
     chmod 0771 /protect_f
     restorecon_recursive /protect_f
@@ -143,6 +134,9 @@ on post-fs
     chown system system /protect_s
     chmod 0771 /protect_s
     restorecon_recursive /protect_s
+
+    # Create nvdata mount point
+    mkdir /nvdata 0771 system system
 
     # secro.img checks
     chown system system /system/bin/sbchk
