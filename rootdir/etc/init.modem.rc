@@ -3,7 +3,7 @@
 # IMPORTANT: Do not create world writable files or directories.
 # This is a common source of Android security bugs.
 #
-   
+
 on post-fs-data
 
     write /proc/bootprof "post-fs-data: on modem start"
@@ -11,19 +11,15 @@ on post-fs-data
     # Modem related device nodes
     mkdir /data/nvram/md  0770 root system
 
-#  Build-in Modified - S
-#    insmod /system/lib/modules/ccci_plat.ko
-#    insmod /system/lib/modules/ccci.ko
-#  Build-in Modified - E
-#   chown radio radio /sys/class/BOOT/BOOT/boot/md
+    # CCCI
     chown radio radio /sys/kernel/ccci/boot
 
-#SeLinux
+    #SeLinux
     mkdir /data/ccci_cfg 0770 system radio
     restorecon /data/ccci_cfg
     restorecon_recursive /protect_f
     restorecon_recursive /protect_s
-    
+
 service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
     class core
     user root
@@ -37,7 +33,7 @@ service gsm0710muxdmd2 /system/bin/gsm0710muxdmd2 -s /dev/ccci2_tty0 -f 512 -n 8
     group radio cache inet misc
     disabled
     oneshot
-    
+
 service muxreport-daemon /system/bin/muxreport
     class core
     user radio
@@ -63,7 +59,7 @@ service ril-daemon-mtk /system/bin/mtkrild
     disabled
     oneshot
 
-service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
+service ril-daemon-mtk2 /system/bin/mtkrildmd2
     class core
     socket rild-md2 stream 660 root radio
     socket rild2-md2 stream 660 root radio
@@ -75,11 +71,6 @@ service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
     socket rild-atci-md2 stream 660 root radio
     user root
     group radio cache inet misc audio sdcard_r sdcard_rw log system
-    disabled
-    oneshot
-
-service md_minilog_util /system/bin/md_minilog_util
-    user radio
     disabled
     oneshot
 
@@ -105,12 +96,6 @@ service ccci_mdinit /system/bin/ccci_mdinit 0
     class core
     oneshot
 
-service ccci_rpcd /system/bin/ccci_rpcd 0
-    user radio
-    group radio system
-    class core
-    oneshot
-
 service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepeerdns nodetach
     user root
     group radio cache inet misc
@@ -120,7 +105,7 @@ service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepe
 #Add by T.Zh for ppp daemon
 service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
     user root
-    disabled 
+    disabled
     oneshot
 
 #
@@ -128,7 +113,7 @@ service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
 #  Modem related services (End)
 #
 
-#Add by hp.chen for 
+#Add by hp.chen for
 #
 #   Telephony Early Read service
 #

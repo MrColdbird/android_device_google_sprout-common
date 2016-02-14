@@ -88,6 +88,28 @@ on init
     symlink /dev/block/mmcblk0p22 /dev/block/platform/mtk-msdc.0/mmcblk0p22
     symlink /dev/block/mmcblk0p23 /dev/block/platform/mtk-msdc.0/mmcblk0p23
 
+    # change partition permissions
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/boot
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/recovery
+    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/secro
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/seccfg
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/logo
+    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/frp
+    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
+
     # Change ION driver permission
     chmod 0666 /dev/ion
 
@@ -518,6 +540,35 @@ on post-fs-data
     chmod 0660 /dev/MTK_SMI
     chown media media /dev/MTK_SMI
 
+    #change partition permission
+
+    chmod 0640 /mtd@sec_ro
+    chown root system /mtd@sec_ro
+
+    chmod 0640 /mtd@preloader
+    chown root system /mtd@preloader
+
+    chmod 0660 /mtd@pro_info
+    chown root system /mtd@pro_info
+
+    chmod 0640 /mtd@bootimg
+    chown root system /mtd@bootimg
+
+    chmod 0640 /mtd@recovery
+    chown root system /mtd@recovery
+
+    chmod 0660 /mtd@nvram
+    chown root system /mtd@nvram
+
+    chmod 0660 /mtd@seccfg
+    chown root system /mtd@seccfg
+
+    chmod 0660 /mtd@misc
+    chown root system /mtd@misc
+
+    chmod 0664 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chown system media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+
     #mtk_sched
     chmod 0660 /dev/mtk_sched
     chown system media /dev/mtk_sched
@@ -805,14 +856,6 @@ on property:persist.uartconsole.enable=1
 service mobile_log_d /system/bin/mobile_log_d
     class main
 
-# bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B \
-        -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
-
 service netdiag /system/bin/netdiag
     class main
     socket netdiag stream 0660 root inet
@@ -1073,6 +1116,16 @@ service shutdown /system/bin/shutdown
     user root
     group root
     disabled
+
+service NvRAMAgent /system/bin/nvram_agent_binder
+    class main
+    user system
+    group system
+
+service NvRAMBackupAgent /system/bin/nvram_backup_binder
+    class main
+    user system
+    group system
 
 service thermal_manager /system/bin/thermal_manager
     class main
