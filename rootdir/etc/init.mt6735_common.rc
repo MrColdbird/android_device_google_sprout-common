@@ -122,6 +122,10 @@ on post-fs
     chmod 0771 /protect_s
     restorecon_recursive /protect_s
 
+    # secro.img checks
+    chown system system /system/bin/sbchk
+    chmod 0771 /system/bin/sbchk
+
     #change permissions for mediaserver
     chown root media /proc/clkmgr/mipi_test
 
@@ -1097,4 +1101,17 @@ service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
 #
 # Connectivity related services (End)
 #
+
+service sbchk /system/bin/sbchk
+    class core
+    user system
+    group system
+    oneshot
+
+# Program binary service
+service program_binary /system/bin/program_binary_service
+    class late_start
+    user system
+    group graphics
+    oneshot
 
