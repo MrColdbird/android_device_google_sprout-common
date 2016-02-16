@@ -87,28 +87,33 @@ on init
     symlink /dev/block/mmcblk0p21 /dev/block/platform/mtk-msdc.0/mmcblk0p21
     symlink /dev/block/mmcblk0p22 /dev/block/platform/mtk-msdc.0/mmcblk0p22
     symlink /dev/block/mmcblk0p23 /dev/block/platform/mtk-msdc.0/mmcblk0p23
+    symlink /dev/block/mmcblk0rpmb /dev/block/platform/mtk-msdc.0/mmcblk0rpmb
 
     # change partition permissions
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/boot
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/boot
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/recovery
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/recovery
-    exec /system/bin/chmod 0640 /dev/block/platform/mtk-msdc.0/by-name/secro
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/secro
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/seccfg
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/proinfo
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/otp
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/nvram
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/para
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/para
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/logo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/logo
-    exec /system/bin/chown root:system /dev/block/platform/mtk-msdc.0/by-name/frp
-    exec /system/bin/chmod 0660 /dev/block/platform/mtk-msdc.0/by-name/frp
+    chown root system /dev/block/mmcblk0
+    chmod 0660 /dev/block/mmcblk0
+    chown root system /dev/block/mmcblk0boot0
+    chmod 0660 /dev/block/mmcblk0boot0
+    chown root system /dev/block/mmcblk0boot1
+    chmod 0660 /dev/block/mmcblk0boot1
+    chown root system /dev/block/mmcblk0p1
+    chmod 0660 /dev/block/mmcblk0p1
+    chown root system /dev/block/mmcblk0p2
+    chmod 0660 /dev/block/mmcblk0p2
+    chown root system /dev/block/mmcblk0p6
+    chmod 0660 /dev/block/mmcblk0p6
+    chown root system /dev/block/mmcblk0p7
+    chmod 0640 /dev/block/mmcblk0p7
+    chown root system /dev/block/mmcblk0p8
+    chmod 0640 /dev/block/mmcblk0p8
+    chown root system /dev/block/mmcblk0p9
+    chmod 0660 /dev/block/mmcblk0p9
+    chown root system /dev/block/mmcblk0p11
+    chmod 0660 /dev/block/mmcblk0p11
+    chown root system /dev/block/mmcblk0p13
+    chmod 0640 /dev/block/mmcblk0p13
+    chown root system /dev/block/mmcblk0p17
+    chmod 0660 /dev/block/mmcblk0p17
 
     # Change ION driver permission
     chmod 0666 /dev/ion
