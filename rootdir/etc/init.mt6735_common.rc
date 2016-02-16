@@ -1149,11 +1149,13 @@ service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
 # Connectivity related services (End)
 #
 
-service sbchk /system/bin/sbchk
-    class core
-    user system
-    group system
-    oneshot
+# Very much like the RIL itself, this service attempts to make use of the kernel's ENABLE_MD_IMG_SECURITY_FEATURE feature.
+# CM13 does however not cater to this security feature, resulting in a kernel panic and crashing in the early boot process.
+#service sbchk /system/bin/sbchk
+#    class core
+#    user system
+#    group system
+#    oneshot
 
 # Program binary service
 service program_binary /system/bin/program_binary_service

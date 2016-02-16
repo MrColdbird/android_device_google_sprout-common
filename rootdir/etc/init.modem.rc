@@ -90,11 +90,13 @@ service ccci_fsd /system/bin/ccci_fsd 0
     class core
     oneshot
 
-service ccci_mdinit /system/bin/ccci_mdinit 0
-    user system
-    group radio system
-    class core
-    oneshot
+# RIL will remain broken until we get a kernel that was built without the ENABLE_MD_IMG_SECURITY_FEATURE flag...
+# Attempting to enable the RIL while using a kernel that has this flag enabled will panic the kernel during the early boot process.
+#service ccci_mdinit /system/bin/ccci_mdinit 0
+#    user system
+#    group radio system
+#    class core
+#    oneshot
 
 service pppd_gprs /system/bin/pppd_dt /dev/ttyACM0 debug noauth refuse-eap usepeerdns nodetach
     user root
