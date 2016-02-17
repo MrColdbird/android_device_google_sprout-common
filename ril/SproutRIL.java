@@ -48,7 +48,7 @@ static final int RIL_REQUEST_GET_HARDWARE_CONFIG = 122;
 static final int RIL_REQUEST_SET_UICC_SUBSCRIPTION = 124;
 
 // MTK-specific vendor commands (Part 1)
-static final int RIL_REQUEST_VENDOR_BASE 2000
+static final int RIL_REQUEST_VENDOR_BASE = 2000;
 static final int RIL_REQUEST_GET_COLP = (RIL_REQUEST_VENDOR_BASE + 0);
 static final int RIL_REQUEST_SET_COLP = (RIL_REQUEST_VENDOR_BASE + 1);
 static final int RIL_REQUEST_GET_COLR = (RIL_REQUEST_VENDOR_BASE + 2);
@@ -67,9 +67,9 @@ static final int RIL_REQUEST_READ_PHB_ENTRY = (RIL_REQUEST_VENDOR_BASE + 14);
 static final int RIL_REQUEST_SET_GPRS_CONNECT_TYPE = (RIL_REQUEST_VENDOR_BASE + 15);
 static final int RIL_REQUEST_SET_GPRS_TRANSFER_TYPE = (RIL_REQUEST_VENDOR_BASE + 16);
 static final int RIL_REQUEST_MOBILEREVISION_AND_IMEI  = (RIL_REQUEST_VENDOR_BASE + 17);
-static final int RIL_REQUEST_QUERY_SIM_NETWORK_LOCK	(RIL_REQUEST_VENDOR_BASE + 18);
-static final int RIL_REQUEST_SET_SIM_NETWORK_LOCK	(RIL_REQUEST_VENDOR_BASE + 19);
-static final int RIL_REQUEST_SET_SCRI	(RIL_REQUEST_VENDOR_BASE + 20);
+static final int RIL_REQUEST_QUERY_SIM_NETWORK_LOCK	= (RIL_REQUEST_VENDOR_BASE + 18);
+static final int RIL_REQUEST_SET_SIM_NETWORK_LOCK = (RIL_REQUEST_VENDOR_BASE + 19);
+static final int RIL_REQUEST_SET_SCRI = (RIL_REQUEST_VENDOR_BASE + 20);
 static final int RIL_REQUEST_BTSIM_CONNECT     = (RIL_REQUEST_VENDOR_BASE + 21);
 static final int RIL_REQUEST_BTSIM_DISCONNECT_OR_POWEROFF   = (RIL_REQUEST_VENDOR_BASE + 22);
 static final int RIL_REQUEST_BTSIM_POWERON_OR_RESETSIM   = (RIL_REQUEST_VENDOR_BASE + 23);
@@ -174,19 +174,19 @@ static final int RIL_REQUEST_TRIGGER_LTE_BG_SEARCH = (RIL_REQUEST_VENDOR_BASE + 
 static final int RIL_REQUEST_CONFERENCE_DIAL = (RIL_REQUEST_VENDOR_BASE + 122);
 
 // MTK-specific vendor commands (Part 2)
-static final int RIL_LOCAL_REQUEST_VENDOR_BASE 2500
-static final int RIL_LOCAL_REQUEST_SIM_AUTHENTICATION (RIL_LOCAL_REQUEST_VENDOR_BASE + 0);
-static final int RIL_LOCAL_REQUEST_USIM_AUTHENTICATION (RIL_LOCAL_REQUEST_VENDOR_BASE + 1);
-static final int RIL_LOCAL_REQUEST_QUERY_MODEM_THERMAL (RIL_LOCAL_REQUEST_VENDOR_BASE + 2);
-static final int RIL_LOCAL_REQUEST_RILD_READ_IMSI (RIL_LOCAL_REQUEST_VENDOR_BASE + 3);
-static final int RIL_LOCAL_REQUEST_GET_SHARED_KEY (RIL_LOCAL_REQUEST_VENDOR_BASE + 4);
-static final int RIL_LOCAL_REQUEST_UPDATE_SIM_LOCK_SETTINGS (RIL_LOCAL_REQUEST_VENDOR_BASE + 5);
-static final int RIL_LOCAL_REQUEST_GET_SIM_LOCK_INFO (RIL_LOCAL_REQUEST_VENDOR_BASE + 6);
-static final int RIL_LOCAL_REQUEST_RESET_SIM_LOCK_SETTINGS (RIL_LOCAL_REQUEST_VENDOR_BASE + 7);
-static final int RIL_LOCAL_REQUEST_GET_MODEM_STATUS (RIL_LOCAL_REQUEST_VENDOR_BASE + 8);
+static final int RIL_LOCAL_REQUEST_VENDOR_BASE = 2500;
+static final int RIL_LOCAL_REQUEST_SIM_AUTHENTICATION = (RIL_LOCAL_REQUEST_VENDOR_BASE + 0);
+static final int RIL_LOCAL_REQUEST_USIM_AUTHENTICATION = (RIL_LOCAL_REQUEST_VENDOR_BASE + 1);
+static final int RIL_LOCAL_REQUEST_QUERY_MODEM_THERMAL = (RIL_LOCAL_REQUEST_VENDOR_BASE + 2);
+static final int RIL_LOCAL_REQUEST_RILD_READ_IMSI = (RIL_LOCAL_REQUEST_VENDOR_BASE + 3);
+static final int RIL_LOCAL_REQUEST_GET_SHARED_KEY = (RIL_LOCAL_REQUEST_VENDOR_BASE + 4);
+static final int RIL_LOCAL_REQUEST_UPDATE_SIM_LOCK_SETTINGS = (RIL_LOCAL_REQUEST_VENDOR_BASE + 5);
+static final int RIL_LOCAL_REQUEST_GET_SIM_LOCK_INFO = (RIL_LOCAL_REQUEST_VENDOR_BASE + 6);
+static final int RIL_LOCAL_REQUEST_RESET_SIM_LOCK_SETTINGS = (RIL_LOCAL_REQUEST_VENDOR_BASE + 7);
+static final int RIL_LOCAL_REQUEST_GET_MODEM_STATUS = (RIL_LOCAL_REQUEST_VENDOR_BASE + 8);
 
 // MTK-specific unsolicited responses
-static final int RIL_UNSOL_MTK_BASE = 3000;
+static final int RIL_UNSOL_VENDOR_BASE = 3000;
 static final int RIL_UNSOL_NEIGHBORING_CELL_INFO = (RIL_UNSOL_VENDOR_BASE + 0);
 static final int RIL_UNSOL_NETWORK_INFO = (RIL_UNSOL_VENDOR_BASE + 1);
 static final int RIL_UNSOL_PHB_READY_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 2);
@@ -821,11 +821,11 @@ static int registered = 0;
 		newResponseCode = RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED;
 		break;
             default:
-                Rlog.i(LOG_TAG, "Unprocessed unsolicited known MTK response: " + response);
+                Rlog.i(RILJ_LOG_TAG, "Unprocessed unsolicited known MTK response: " + response);
         }
 
         if (rewindAndReplace) {
-            Rlog.w(LOG_TAG, "Rewriting MTK unsolicited response to " + newResponseCode);
+            Rlog.w(RILJ_LOG_TAG, "Rewriting MTK unsolicited response to " + newResponseCode);
 
             // Rewrite
             p.setDataPosition(dataPosition);
@@ -836,6 +836,87 @@ static int registered = 0;
 
             super.processUnsolicited(p);
         }
+    }
+    
+    private Object
+    responseCrssNotification(Parcel p) {
+        /*SuppCrssNotification notification = new SuppCrssNotification();
+
+        notification.code = p.readInt();
+        notification.type = p.readInt();
+        notification.number = p.readString();
+        notification.alphaid = p.readString();
+        notification.cli_validity = p.readInt();
+
+        return notification;*/
+
+        Rlog.e(RILJ_LOG_TAG, "NOT PROCESSING CRSS NOTIFICATION");
+        return null;
+    }
+    
+    private Object responseEtwsNotification(Parcel p) {
+        /*EtwsNotification response = new EtwsNotification();
+        
+        response.warningType = p.readInt();
+        response.messageId = p.readInt();
+        response.serialNumber = p.readInt();
+        response.plmnId = p.readString();
+        response.securityInfo = p.readString();
+        
+        return response;*/
+        Rlog.e(RILJ_LOG_TAG, "NOT PROCESSING ETWS NOTIFICATION");
+
+        return null;
+    }
+    
+    void setCallIndication(String[] incomingCallInfo) {
+	RILRequest rr
+            = RILRequest.obtain(RIL_REQUEST_SET_CALL_INDICATION, null);
+
+	int callId = Integer.parseInt(incomingCallInfo[0]);
+        int callMode = Integer.parseInt(incomingCallInfo[3]);
+        int seqNumber = Integer.parseInt(incomingCallInfo[4]);
+
+	// some guess work is needed here, for now, just 0
+	callMode = 0;
+
+        rr.mParcel.writeInt(3);
+
+        rr.mParcel.writeInt(callMode);
+        rr.mParcel.writeInt(callId);
+        rr.mParcel.writeInt(seqNumber);
+
+        if (RILJ_LOGD) riljLog(rr.serialString() + "> "
+            + requestToString(rr.mRequest) + " " + callMode + " " + callId + " " + seqNumber);
+
+        send(rr);
+    }
+    
+    private void setRadioStateFromRILInt (int stateCode) {
+        switch (stateCode) {
+	case 0: case 1: break; // radio off
+	default:
+	    {
+	        RILRequest rr = RILRequest.obtain(RIL_REQUEST_SET_GPRS_TRANSFER_TYPE, null);
+
+		if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+		rr.mParcel.writeInt(1);
+		rr.mParcel.writeInt(1);
+
+		send(rr);
+	    }
+	    {
+	        RILRequest rr = RILRequest.obtain(RIL_REQUEST_SET_GPRS_CONNECT_TYPE, null);
+
+		if (RILJ_LOGD) riljLog(rr.serialString() + "> " + requestToString(rr.mRequest));
+
+		rr.mParcel.writeInt(1);
+		rr.mParcel.writeInt(1);
+
+		send(rr);
+	    }
+	}
     }
     
     static String
