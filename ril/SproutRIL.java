@@ -741,19 +741,19 @@ static int registered = 0;
             case RIL_UNSOL_NETWORK_INFO: ret = responseStrings(p); break;           
             case RIL_UNSOL_CALL_FORWARDING: ret = responseInts(p); break;
             case RIL_UNSOL_CRSS_NOTIFICATION: ret = responseCrssNotification(p); break;
-            case RIL_UNSOL_CALL_PROGRESS_INFO: ret = responseStrings(p); break;         
+            //case RIL_UNSOL_CALL_PROGRESS_INFO: ret = responseStrings(p); break;         
             case RIL_UNSOL_PHB_READY_NOTIFICATION: ret = responseVoid(p); break;
             case RIL_UNSOL_SIM_INSERTED_STATUS: ret = responseInts(p); break;            
             case RIL_UNSOL_SIM_MISSING: ret = responseInts(p); break;   
             case RIL_UNSOL_SIM_RECOVERY: ret = responseInts(p); break;         
             case RIL_UNSOL_VIRTUAL_SIM_ON: ret = responseInts(p); break; 
             case RIL_UNSOL_VIRTUAL_SIM_OFF: ret = responseInts(p); break; 
-            case RIL_UNSOL_SPEECH_INFO: ret = responseInts(p); break;           
+            //case RIL_UNSOL_SPEECH_INFO: ret = responseInts(p); break;           
             case RIL_UNSOL_RADIO_TEMPORARILY_UNAVAILABLE: ret = responseInts(p); break; 
             case RIL_UNSOL_ME_SMS_STORAGE_FULL: ret =  responseVoid(p); break;
             case RIL_UNSOL_SMS_READY_NOTIFICATION: ret = responseVoid(p); break;
-            case RIL_UNSOL_VT_STATUS_INFO: ret = responseInts(p); break;
-            case RIL_UNSOL_VT_RING_INFO: ret = responseVoid(p); break;
+            //case RIL_UNSOL_VT_STATUS_INFO: ret = responseInts(p); break;
+            //case RIL_UNSOL_VT_RING_INFO: ret = responseVoid(p); break;
             case RIL_UNSOL_SCRI_RESULT: ret = responseInts(p); break;
             case RIL_UNSOL_GPRS_DETACH: ret = responseVoid(p); break;
             case RIL_UNSOL_INCOMING_CALL_INDICATION: ret = responseStrings(p); break;
@@ -784,10 +784,12 @@ static int registered = 0;
         int newResponseCode = 0;
 
         switch (response) {
+			/*
             case RIL_UNSOL_CALL_PROGRESS_INFO:
 		rewindAndReplace = true;
 		newResponseCode = RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED;
 		break;
+		*/
 
             case RIL_UNSOL_INCOMING_CALL_INDICATION:
 		setCallIndication((String[])ret);
