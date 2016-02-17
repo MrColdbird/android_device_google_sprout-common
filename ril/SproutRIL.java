@@ -46,6 +46,211 @@ static final int RIL_REQUEST_SET_3G_CAPABILITY = 128;
 static final int RIL_REQUEST_ALLOW_DATA = 125;
 static final int RIL_REQUEST_GET_HARDWARE_CONFIG = 122;
 static final int RIL_REQUEST_SET_UICC_SUBSCRIPTION = 124;
+
+// MTK-specific vendor commands (Part 1)
+static final int RIL_REQUEST_VENDOR_BASE 2000
+static final int RIL_REQUEST_GET_COLP = (RIL_REQUEST_VENDOR_BASE + 0);
+static final int RIL_REQUEST_SET_COLP = (RIL_REQUEST_VENDOR_BASE + 1);
+static final int RIL_REQUEST_GET_COLR = (RIL_REQUEST_VENDOR_BASE + 2);
+static final int RIL_REQUEST_GET_CCM = (RIL_REQUEST_VENDOR_BASE + 3);
+static final int RIL_REQUEST_GET_ACM = (RIL_REQUEST_VENDOR_BASE + 4);
+static final int RIL_REQUEST_GET_ACMMAX = (RIL_REQUEST_VENDOR_BASE + 5);
+static final int RIL_REQUEST_GET_PPU_AND_CURRENCY = (RIL_REQUEST_VENDOR_BASE + 6);
+static final int RIL_REQUEST_SET_ACMMAX = (RIL_REQUEST_VENDOR_BASE + 7);
+static final int RIL_REQUEST_RESET_ACM = (RIL_REQUEST_VENDOR_BASE + 8);
+static final int RIL_REQUEST_SET_PPU_AND_CURRENCY = (RIL_REQUEST_VENDOR_BASE + 9);
+static final int RIL_REQUEST_MODEM_POWEROFF = (RIL_REQUEST_VENDOR_BASE + 10);
+static final int RIL_REQUEST_DUAL_SIM_MODE_SWITCH = (RIL_REQUEST_VENDOR_BASE + 11);
+static final int RIL_REQUEST_QUERY_PHB_STORAGE_INFO = (RIL_REQUEST_VENDOR_BASE + 12);
+static final int RIL_REQUEST_WRITE_PHB_ENTRY = (RIL_REQUEST_VENDOR_BASE + 13);
+static final int RIL_REQUEST_READ_PHB_ENTRY = (RIL_REQUEST_VENDOR_BASE + 14);
+static final int RIL_REQUEST_SET_GPRS_CONNECT_TYPE = (RIL_REQUEST_VENDOR_BASE + 15);
+static final int RIL_REQUEST_SET_GPRS_TRANSFER_TYPE = (RIL_REQUEST_VENDOR_BASE + 16);
+static final int RIL_REQUEST_MOBILEREVISION_AND_IMEI  = (RIL_REQUEST_VENDOR_BASE + 17);
+static final int RIL_REQUEST_QUERY_SIM_NETWORK_LOCK	(RIL_REQUEST_VENDOR_BASE + 18);
+static final int RIL_REQUEST_SET_SIM_NETWORK_LOCK	(RIL_REQUEST_VENDOR_BASE + 19);
+static final int RIL_REQUEST_SET_SCRI	(RIL_REQUEST_VENDOR_BASE + 20);
+static final int RIL_REQUEST_BTSIM_CONNECT     = (RIL_REQUEST_VENDOR_BASE + 21);
+static final int RIL_REQUEST_BTSIM_DISCONNECT_OR_POWEROFF   = (RIL_REQUEST_VENDOR_BASE + 22);
+static final int RIL_REQUEST_BTSIM_POWERON_OR_RESETSIM   = (RIL_REQUEST_VENDOR_BASE + 23);
+static final int RIL_REQUEST_BTSIM_TRANSFERAPDU   = (RIL_REQUEST_VENDOR_BASE + 24);
+static final int RIL_REQUEST_SET_NETWORK_SELECTION_MANUAL_WITH_ACT   = (RIL_REQUEST_VENDOR_BASE + 25);
+static final int RIL_REQUEST_QUERY_ICCID   = (RIL_REQUEST_VENDOR_BASE + 26);
+static final int RIL_REQUEST_USIM_AUTHENTICATION      = (RIL_REQUEST_VENDOR_BASE + 27);
+static final int RIL_REQUEST_MODEM_POWERON   = (RIL_REQUEST_VENDOR_BASE + 28);
+static final int RIL_REQUEST_GET_SMS_SIM_MEM_STATUS   = (RIL_REQUEST_VENDOR_BASE + 29);
+static final int RIL_REQUEST_GET_PHONE_CAPABILITY = (RIL_REQUEST_VENDOR_BASE + 30);
+static final int RIL_REQUEST_SET_PHONE_CAPABILITY = (RIL_REQUEST_VENDOR_BASE + 31);
+static final int RIL_REQUEST_GET_POL_CAPABILITY = (RIL_REQUEST_VENDOR_BASE + 32);
+static final int RIL_REQUEST_GET_POL_LIST = (RIL_REQUEST_VENDOR_BASE + 33);
+static final int RIL_REQUEST_SET_POL_ENTRY = (RIL_REQUEST_VENDOR_BASE + 34);
+static final int RIL_REQUEST_QUERY_UPB_CAPABILITY = (RIL_REQUEST_VENDOR_BASE + 35);
+static final int RIL_REQUEST_EDIT_UPB_ENTRY = (RIL_REQUEST_VENDOR_BASE + 36);
+static final int RIL_REQUEST_DELETE_UPB_ENTRY = (RIL_REQUEST_VENDOR_BASE + 37);
+static final int RIL_REQUEST_READ_UPB_GAS_LIST = (RIL_REQUEST_VENDOR_BASE + 38);
+static final int RIL_REQUEST_READ_UPB_GRP  = (RIL_REQUEST_VENDOR_BASE + 39);
+static final int RIL_REQUEST_WRITE_UPB_GRP  = (RIL_REQUEST_VENDOR_BASE + 40);
+static final int RIL_REQUEST_SET_SIM_RECOVERY_ON = (RIL_REQUEST_VENDOR_BASE + 41);
+static final int RIL_REQUEST_GET_SIM_RECOVERY_ON = (RIL_REQUEST_VENDOR_BASE + 42);
+static final int RIL_REQUEST_SET_TRM = (RIL_REQUEST_VENDOR_BASE + 43);
+static final int RIL_REQUEST_DETECT_SIM_MISSING = (RIL_REQUEST_VENDOR_BASE + 44);
+static final int RIL_REQUEST_GET_CALIBRATION_DATA = (RIL_REQUEST_VENDOR_BASE + 45);
+static final int RIL_REQUEST_GET_PHB_STRING_LENGTH = (RIL_REQUEST_VENDOR_BASE + 46);
+static final int RIL_REQUEST_GET_PHB_MEM_STORAGE = (RIL_REQUEST_VENDOR_BASE + 47);
+static final int RIL_REQUEST_SET_PHB_MEM_STORAGE = (RIL_REQUEST_VENDOR_BASE + 48);
+static final int RIL_REQUEST_READ_PHB_ENTRY_EXT = (RIL_REQUEST_VENDOR_BASE + 49);
+static final int RIL_REQUEST_WRITE_PHB_ENTRY_EXT = (RIL_REQUEST_VENDOR_BASE + 50);
+static final int RIL_REQUEST_GET_SMS_PARAMS = (RIL_REQUEST_VENDOR_BASE + 51);
+static final int RIL_REQUEST_SET_SMS_PARAMS = (RIL_REQUEST_VENDOR_BASE + 52);
+static final int RIL_REQUEST_SIM_TRANSMIT_BASIC = (RIL_REQUEST_VENDOR_BASE + 53);
+static final int RIL_REQUEST_SIM_TRANSMIT_CHANNEL = (RIL_REQUEST_VENDOR_BASE + 54);
+static final int RIL_REQUEST_SIM_GET_ATR = (RIL_REQUEST_VENDOR_BASE + 55);
+static final int RIL_REQUEST_SET_CB_CHANNEL_CONFIG_INFO   = (RIL_REQUEST_VENDOR_BASE + 56);
+static final int RIL_REQUEST_SET_CB_LANGUAGE_CONFIG_INFO  = (RIL_REQUEST_VENDOR_BASE + 57);
+static final int RIL_REQUEST_GET_CB_CONFIG_INFO           = (RIL_REQUEST_VENDOR_BASE + 58);
+static final int RIL_REQUEST_SET_ALL_CB_LANGUAGE_ON       = (RIL_REQUEST_VENDOR_BASE + 59);
+static final int RIL_REQUEST_SET_ETWS = (RIL_REQUEST_VENDOR_BASE + 60);
+static final int RIL_REQUEST_SET_FD_MODE = (RIL_REQUEST_VENDOR_BASE + 61);
+static final int RIL_REQUEST_DETACH_PS = (RIL_REQUEST_VENDOR_BASE + 62);
+static final int RIL_REQUEST_SIM_OPEN_CHANNEL_WITH_SW = (RIL_REQUEST_VENDOR_BASE + 63);
+static final int RIL_REQUEST_SET_REG_SUSPEND_ENABLED = (RIL_REQUEST_VENDOR_BASE + 64);
+static final int RIL_REQUEST_RESUME_REGISTRATION = (RIL_REQUEST_VENDOR_BASE + 65);
+static final int RIL_REQUEST_STORE_MODEM_TYPE = (RIL_REQUEST_VENDOR_BASE + 66);
+static final int RIL_REQUEST_QUERY_MODEM_TYPE = (RIL_REQUEST_VENDOR_BASE + 67);
+static final int RIL_REQUEST_SIM_INTERFACE_SWITCH = (RIL_REQUEST_VENDOR_BASE + 68);
+static final int RIL_REQUEST_UICC_SELECT_APPLICATION = (RIL_REQUEST_VENDOR_BASE + 69);
+static final int RIL_REQUEST_UICC_DEACTIVATE_APPLICATION = (RIL_REQUEST_VENDOR_BASE + 70);
+static final int RIL_REQUEST_UICC_APPLICATION_IO = (RIL_REQUEST_VENDOR_BASE + 71);
+static final int RIL_REQUEST_UICC_AKA_AUTHENTICATE = (RIL_REQUEST_VENDOR_BASE + 72);
+static final int RIL_REQUEST_UICC_GBA_AUTHENTICATE_BOOTSTRAP = (RIL_REQUEST_VENDOR_BASE + 73);
+static final int RIL_REQUEST_UICC_GBA_AUTHENTICATE_NAF = (RIL_REQUEST_VENDOR_BASE + 74);
+static final int RIL_REQUEST_STK_EVDL_CALL_BY_AP = (RIL_REQUEST_VENDOR_BASE + 75);
+static final int RIL_REQUEST_GET_FEMTOCELL_LIST = (RIL_REQUEST_VENDOR_BASE + 76);
+static final int RIL_REQUEST_ABORT_FEMTOCELL_LIST = (RIL_REQUEST_VENDOR_BASE + 77);
+static final int RIL_REQUEST_SELECT_FEMTOCELL = (RIL_REQUEST_VENDOR_BASE + 78);
+static final int RIL_REQUEST_SEND_OPLMN = (RIL_REQUEST_VENDOR_BASE + 79);
+static final int RIL_REQUEST_GET_OPLMN_VERSION = (RIL_REQUEST_VENDOR_BASE + 80);
+static final int RIL_REQUEST_ABORT_QUERY_AVAILABLE_NETWORKS = (RIL_REQUEST_VENDOR_BASE + 81);
+static final int RIL_REQUEST_DIAL_UP_CSD = (RIL_REQUEST_VENDOR_BASE + 82);
+static final int RIL_REQUEST_SET_TELEPHONY_MODE = (RIL_REQUEST_VENDOR_BASE + 83);
+static final int RIL_REQUEST_HANGUP_ALL = (RIL_REQUEST_VENDOR_BASE + 84);
+static final int RIL_REQUEST_FORCE_RELEASE_CALL = (RIL_REQUEST_VENDOR_BASE + 85);
+static final int RIL_REQUEST_SET_CALL_INDICATION = (RIL_REQUEST_VENDOR_BASE + 86);
+static final int RIL_REQUEST_EMERGENCY_DIAL = (RIL_REQUEST_VENDOR_BASE + 87);
+static final int RIL_REQUEST_SET_ECC_SERVICE_CATEGORY = (RIL_REQUEST_VENDOR_BASE + 88);
+static final int RIL_REQUEST_SET_ECC_LIST = (RIL_REQUEST_VENDOR_BASE + 89);
+static final int RIL_REQUEST_GENERAL_SIM_AUTH = (RIL_REQUEST_VENDOR_BASE + 90);
+static final int RIL_REQUEST_OPEN_ICC_APPLICATION = (RIL_REQUEST_VENDOR_BASE + 91);
+static final int RIL_REQUEST_GET_ICC_APPLICATION_STATUS = (RIL_REQUEST_VENDOR_BASE + 92);
+static final int RIL_REQUEST_SIM_IO_EX = (RIL_REQUEST_VENDOR_BASE + 93);
+static final int RIL_REQUEST_SET_IMS_ENABLE = (RIL_REQUEST_VENDOR_BASE + 94);
+static final int RIL_REQUEST_QUERY_AVAILABLE_NETWORKS_WITH_ACT = (RIL_REQUEST_VENDOR_BASE + 95);
+static final int RIL_REQUEST_SEND_CNAP = (RIL_REQUEST_VENDOR_BASE + 96);
+static final int RIL_REQUEST_SET_CLIP = (RIL_REQUEST_VENDOR_BASE + 97);
+static final int RIL_REQUEST_SETUP_DEDICATE_DATA_CALL = (RIL_REQUEST_VENDOR_BASE + 98);
+static final int RIL_REQUEST_DEACTIVATE_DEDICATE_DATA_CALL = (RIL_REQUEST_VENDOR_BASE + 99);
+static final int RIL_REQUEST_MODIFY_DATA_CALL = (RIL_REQUEST_VENDOR_BASE + 100);
+static final int RIL_REQUEST_ABORT_SETUP_DATA_CALL = (RIL_REQUEST_VENDOR_BASE + 101);
+static final int RIL_REQUEST_PCSCF_DISCOVERY_PCO = (RIL_REQUEST_VENDOR_BASE + 102);
+static final int RIL_REQUEST_CLEAR_DATA_BEARER = (RIL_REQUEST_VENDOR_BASE + 103);
+static final int RIL_REQUEST_REMOVE_CB_MESSAGE = (RIL_REQUEST_VENDOR_BASE + 104);
+static final int RIL_REQUEST_SET_DATA_CENTRIC = (RIL_REQUEST_VENDOR_BASE + 105);
+static final int RIL_REQUEST_ADD_IMS_CONFERENCE_CALL_MEMBER = (RIL_REQUEST_VENDOR_BASE + 106);
+static final int RIL_REQUEST_REMOVE_IMS_CONFERENCE_CALL_MEMBER = (RIL_REQUEST_VENDOR_BASE + 107);
+static final int RIL_REQUEST_DIAL_WITH_SIP_URI = (RIL_REQUEST_VENDOR_BASE + 108);
+static final int RIL_REQUEST_RETRIEVE_HELD_CALL = (RIL_REQUEST_VENDOR_BASE + 109);
+static final int RIL_REQUEST_SET_SPEECH_CODEC_INFO = (RIL_REQUEST_VENDOR_BASE + 110);
+static final int RIL_REQUEST_SET_DATA_ON_TO_MD = (RIL_REQUEST_VENDOR_BASE + 111);
+static final int RIL_REQUEST_SET_REMOVE_RESTRICT_EUTRAN_MODE = (RIL_REQUEST_VENDOR_BASE + 112);
+static final int RIL_REQUEST_SET_IMS_CALL_STATUS = (RIL_REQUEST_VENDOR_BASE + 113);
+static final int RIL_REQUEST_SET_VT_CAPABILITY = (RIL_REQUEST_VENDOR_BASE + 114);
+static final int RIL_REQUEST_VT_DIAL = (RIL_REQUEST_VENDOR_BASE + 115);
+static final int RIL_REQUEST_VOICE_ACCEPT = (RIL_REQUEST_VENDOR_BASE + 116);
+static final int RIL_REQUEST_CONFIG_MODEM_STATUS = (RIL_REQUEST_VENDOR_BASE + 117);
+static final int RIL_REQUEST_SET_ACTIVE_PS_SLOT = (RIL_REQUEST_VENDOR_BASE + 118);
+static final int RIL_REQUEST_CONFIRM_INTER_3GPP_IRAT_CHANGE = (RIL_REQUEST_VENDOR_BASE + 119);
+static final int RIL_REQUEST_SET_SVLTE_RAT_MODE = (RIL_REQUEST_VENDOR_BASE + 120);
+static final int RIL_REQUEST_TRIGGER_LTE_BG_SEARCH = (RIL_REQUEST_VENDOR_BASE + 121);
+static final int RIL_REQUEST_CONFERENCE_DIAL = (RIL_REQUEST_VENDOR_BASE + 122);
+
+// MTK-specific vendor commands (Part 2)
+static final int RIL_LOCAL_REQUEST_VENDOR_BASE 2500
+static final int RIL_LOCAL_REQUEST_SIM_AUTHENTICATION (RIL_LOCAL_REQUEST_VENDOR_BASE + 0);
+static final int RIL_LOCAL_REQUEST_USIM_AUTHENTICATION (RIL_LOCAL_REQUEST_VENDOR_BASE + 1);
+static final int RIL_LOCAL_REQUEST_QUERY_MODEM_THERMAL (RIL_LOCAL_REQUEST_VENDOR_BASE + 2);
+static final int RIL_LOCAL_REQUEST_RILD_READ_IMSI (RIL_LOCAL_REQUEST_VENDOR_BASE + 3);
+static final int RIL_LOCAL_REQUEST_GET_SHARED_KEY (RIL_LOCAL_REQUEST_VENDOR_BASE + 4);
+static final int RIL_LOCAL_REQUEST_UPDATE_SIM_LOCK_SETTINGS (RIL_LOCAL_REQUEST_VENDOR_BASE + 5);
+static final int RIL_LOCAL_REQUEST_GET_SIM_LOCK_INFO (RIL_LOCAL_REQUEST_VENDOR_BASE + 6);
+static final int RIL_LOCAL_REQUEST_RESET_SIM_LOCK_SETTINGS (RIL_LOCAL_REQUEST_VENDOR_BASE + 7);
+static final int RIL_LOCAL_REQUEST_GET_MODEM_STATUS (RIL_LOCAL_REQUEST_VENDOR_BASE + 8);
+
+// MTK-specific unsolicited responses
+static final int RIL_UNSOL_MTK_BASE = 3000;
+static final int RIL_UNSOL_NEIGHBORING_CELL_INFO = (RIL_UNSOL_VENDOR_BASE + 0);
+static final int RIL_UNSOL_NETWORK_INFO = (RIL_UNSOL_VENDOR_BASE + 1);
+static final int RIL_UNSOL_PHB_READY_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 2);
+static final int RIL_UNSOL_SIM_INSERTED_STATUS = (RIL_UNSOL_VENDOR_BASE + 3);
+static final int RIL_UNSOL_RADIO_TEMPORARILY_UNAVAILABLE = (RIL_UNSOL_VENDOR_BASE + 4);
+static final int RIL_UNSOL_ME_SMS_STORAGE_FULL = (RIL_UNSOL_VENDOR_BASE + 5);
+static final int RIL_UNSOL_SMS_READY_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 6);
+static final int RIL_UNSOL_SCRI_RESULT = (RIL_UNSOL_VENDOR_BASE + 7);
+static final int RIL_UNSOL_SIM_MISSING = (RIL_UNSOL_VENDOR_BASE + 8);
+static final int RIL_UNSOL_GPRS_DETACH = (RIL_UNSOL_VENDOR_BASE + 9);
+static final int RIL_UNSOL_ATCI_RESPONSE = (RIL_UNSOL_VENDOR_BASE + 10);
+static final int RIL_UNSOL_SIM_RECOVERY = (RIL_UNSOL_VENDOR_BASE + 11);
+static final int RIL_UNSOL_VIRTUAL_SIM_ON = (RIL_UNSOL_VENDOR_BASE + 12);
+static final int RIL_UNSOL_VIRTUAL_SIM_OFF = (RIL_UNSOL_VENDOR_BASE + 13);
+static final int RIL_UNSOL_INVALID_SIM = (RIL_UNSOL_VENDOR_BASE + 14);
+static final int RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED = (RIL_UNSOL_VENDOR_BASE + 15);
+static final int RIL_UNSOL_RESPONSE_ACMT = (RIL_UNSOL_VENDOR_BASE + 16);
+static final int RIL_UNSOL_EF_CSP_PLMN_MODE_BIT = (RIL_UNSOL_VENDOR_BASE + 17);
+static final int RIL_UNSOL_IMEI_LOCK = (RIL_UNSOL_VENDOR_BASE + 18);
+static final int RIL_UNSOL_RESPONSE_MMRR_STATUS_CHANGED = (RIL_UNSOL_VENDOR_BASE + 19);
+static final int RIL_UNSOL_SIM_PLUG_OUT = (RIL_UNSOL_VENDOR_BASE + 20);
+static final int RIL_UNSOL_SIM_PLUG_IN = (RIL_UNSOL_VENDOR_BASE + 21);
+static final int RIL_UNSOL_RESPONSE_ETWS_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 22);
+static final int RIL_UNSOL_RESPONSE_PLMN_CHANGED = (RIL_UNSOL_VENDOR_BASE + 23);
+static final int RIL_UNSOL_RESPONSE_REGISTRATION_SUSPENDED = (RIL_UNSOL_VENDOR_BASE + 24);
+static final int RIL_UNSOL_STK_EVDL_CALL = (RIL_UNSOL_VENDOR_BASE + 25);
+static final int RIL_UNSOL_DATA_PACKETS_FLUSH = (RIL_UNSOL_VENDOR_BASE + 26);
+static final int RIL_UNSOL_FEMTOCELL_INFO = (RIL_UNSOL_VENDOR_BASE + 27);
+static final int RIL_UNSOL_STK_SETUP_MENU_RESET = (RIL_UNSOL_VENDOR_BASE + 28);
+static final int RIL_UNSOL_APPLICATION_SESSION_ID_CHANGED = (RIL_UNSOL_VENDOR_BASE + 29);
+static final int RIL_UNSOL_ECONF_SRVCC_INDICATION = (RIL_UNSOL_VENDOR_BASE + 30);
+static final int RIL_UNSOL_IMS_ENABLE_DONE = (RIL_UNSOL_VENDOR_BASE + 31);
+static final int RIL_UNSOL_IMS_DISABLE_DONE = (RIL_UNSOL_VENDOR_BASE + 32);
+static final int RIL_UNSOL_IMS_REGISTRATION_INFO = (RIL_UNSOL_VENDOR_BASE + 33);
+static final int RIL_UNSOL_DEDICATE_BEARER_ACTIVATED = (RIL_UNSOL_VENDOR_BASE + 34);
+static final int RIL_UNSOL_DEDICATE_BEARER_MODIFIED = (RIL_UNSOL_VENDOR_BASE + 35);
+static final int RIL_UNSOL_DEDICATE_BEARER_DEACTIVATED = (RIL_UNSOL_VENDOR_BASE + 36);
+static final int RIL_UNSOL_RAC_UPDATE = (RIL_UNSOL_VENDOR_BASE + 37);
+static final int RIL_UNSOL_ECONF_RESULT_INDICATION = (RIL_UNSOL_VENDOR_BASE + 38);
+static final int RIL_UNSOL_MELOCK_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 39);
+static final int RIL_UNSOL_CALL_FORWARDING = (RIL_UNSOL_VENDOR_BASE + 40);
+static final int RIL_UNSOL_CRSS_NOTIFICATION = (RIL_UNSOL_VENDOR_BASE + 41);
+static final int RIL_UNSOL_INCOMING_CALL_INDICATION = (RIL_UNSOL_VENDOR_BASE + 42);
+static final int RIL_UNSOL_CIPHER_INDICATION = (RIL_UNSOL_VENDOR_BASE + 43);
+static final int RIL_UNSOL_CNAP = (RIL_UNSOL_VENDOR_BASE + 44);
+static final int RIL_UNSOL_SIM_COMMON_SLOT_NO_CHANGED = (RIL_UNSOL_VENDOR_BASE + 45);
+static final int RIL_UNSOL_DATA_ALLOWED = (RIL_UNSOL_VENDOR_BASE + 46);
+static final int RIL_UNSOL_STK_CALL_CTRL = (RIL_UNSOL_VENDOR_BASE + 47);
+static final int RIL_UNSOL_VOLTE_EPS_NETWORK_FEATURE_SUPPORT = (RIL_UNSOL_VENDOR_BASE + 48);
+static final int RIL_UNSOL_CALL_INFO_INDICATION = (RIL_UNSOL_VENDOR_BASE + 49);
+static final int RIL_UNSOL_VOLTE_EPS_NETWORK_FEATURE_INFO = (RIL_UNSOL_VENDOR_BASE + 50);
+static final int RIL_UNSOL_SRVCC_HANDOVER_INFO_INDICATION = (RIL_UNSOL_VENDOR_BASE + 51);
+static final int RIL_UNSOL_SPEECH_CODEC_INFO = (RIL_UNSOL_VENDOR_BASE + 52);
+static final int RIL_UNSOL_MD_STATE_CHANGE = (RIL_UNSOL_VENDOR_BASE + 53);
+static final int RIL_UNSOL_REMOVE_RESTRICT_EUTRAN = (RIL_UNSOL_VENDOR_BASE + 54);
+static final int RIL_UNSOL_MO_DATA_BARRING_INFO = (RIL_UNSOL_VENDOR_BASE + 55);
+static final int RIL_UNSOL_SSAC_BARRING_INFO = (RIL_UNSOL_VENDOR_BASE + 56);
+static final int RIL_UNSOL_SIP_CALL_PROGRESS_INDICATOR = (RIL_UNSOL_VENDOR_BASE + 57);
+static final int RIL_UNSOL_ABNORMAL_EVENT = (RIL_UNSOL_VENDOR_BASE + 58);
+static final int RIL_UNSOL_CDMA_CARD_TYPE = (RIL_UNSOL_VENDOR_BASE + 59);
+static final int RIL_UNSOL_INTER_3GPP_IRAT_STATE_CHANGE = (RIL_UNSOL_VENDOR_BASE + 60);
+static final int RIL_UNSOL_LTE_BG_SEARCH_STATUS = (RIL_UNSOL_VENDOR_BASE + 61);
+static final int RIL_UNSOL_GMSS_RAT_CHANGED = (RIL_UNSOL_VENDOR_BASE + 62);
+
 static int registered = 0;
 
     public SproutRIL(Context context, int networkMode, int cdmaSubscription) {
@@ -266,8 +471,6 @@ static int registered = 0;
             notifyRegistrantsRilConnectionChanged(-1);
         }
     }
-
-
 
    protected RILRequest
     processSolicited (Parcel p) {
@@ -526,6 +729,115 @@ static int registered = 0;
         return rr;
     }
 
+    @Override
+    protected void
+    processUnsolicited (Parcel p) {
+        Object ret;
+        int dataPosition = p.dataPosition(); // save off position within the Parcel
+        int response = p.readInt();
+
+        switch(response) {
+            case RIL_UNSOL_NEIGHBORING_CELL_INFO: ret = responseStrings(p); break;          
+            case RIL_UNSOL_NETWORK_INFO: ret = responseStrings(p); break;           
+            case RIL_UNSOL_CALL_FORWARDING: ret = responseInts(p); break;
+            case RIL_UNSOL_CRSS_NOTIFICATION: ret = responseCrssNotification(p); break;
+            case RIL_UNSOL_CALL_PROGRESS_INFO: ret = responseStrings(p); break;         
+            case RIL_UNSOL_PHB_READY_NOTIFICATION: ret = responseVoid(p); break;
+            case RIL_UNSOL_SIM_INSERTED_STATUS: ret = responseInts(p); break;            
+            case RIL_UNSOL_SIM_MISSING: ret = responseInts(p); break;   
+            case RIL_UNSOL_SIM_RECOVERY: ret = responseInts(p); break;         
+            case RIL_UNSOL_VIRTUAL_SIM_ON: ret = responseInts(p); break; 
+            case RIL_UNSOL_VIRTUAL_SIM_OFF: ret = responseInts(p); break; 
+            case RIL_UNSOL_SPEECH_INFO: ret = responseInts(p); break;           
+            case RIL_UNSOL_RADIO_TEMPORARILY_UNAVAILABLE: ret = responseInts(p); break; 
+            case RIL_UNSOL_ME_SMS_STORAGE_FULL: ret =  responseVoid(p); break;
+            case RIL_UNSOL_SMS_READY_NOTIFICATION: ret = responseVoid(p); break;
+            case RIL_UNSOL_VT_STATUS_INFO: ret = responseInts(p); break;
+            case RIL_UNSOL_VT_RING_INFO: ret = responseVoid(p); break;
+            case RIL_UNSOL_SCRI_RESULT: ret = responseInts(p); break;
+            case RIL_UNSOL_GPRS_DETACH: ret = responseVoid(p); break;
+            case RIL_UNSOL_INCOMING_CALL_INDICATION: ret = responseStrings(p); break;
+            case RIL_UNSOL_EF_CSP_PLMN_MODE_BIT: ret = responseInts(p); break;
+            case RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED: ret =  responseVoid(p); break;
+            case RIL_UNSOL_INVALID_SIM:  ret = responseStrings(p); break;
+            case RIL_UNSOL_RESPONSE_ACMT: ret = responseInts(p); break;
+            case RIL_UNSOL_IMEI_LOCK: ret = responseVoid(p); break;
+            case RIL_UNSOL_RESPONSE_MMRR_STATUS_CHANGED: ret = responseInts(p); break;
+            case RIL_UNSOL_SIM_PLUG_OUT: ret = responseInts(p); break;
+            case RIL_UNSOL_SIM_PLUG_IN: ret = responseInts(p); break;
+            case RIL_UNSOL_RESPONSE_ETWS_NOTIFICATION: ret = responseEtwsNotification(p); break;
+            case RIL_UNSOL_CNAP: ret = responseStrings(p); break;
+            case RIL_UNSOL_STK_EVDL_CALL: ret = responseInts(p); break;            
+            case RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED: ret =  responseVoid(p); break;
+            default:
+                // Rewind the Parcel
+                p.setDataPosition(dataPosition);
+
+                // Forward responses that we are not overriding to the super class
+                super.processUnsolicited(p);
+                return;
+        }
+
+        // To avoid duplicating code from RIL.java, we rewrite some response codes to fit
+        // AOSP's one (when they do the same effect)
+        boolean rewindAndReplace = false;
+        int newResponseCode = 0;
+
+        switch (response) {
+            case RIL_UNSOL_CALL_PROGRESS_INFO:
+		rewindAndReplace = true;
+		newResponseCode = RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED;
+		break;
+
+            case RIL_UNSOL_INCOMING_CALL_INDICATION:
+		setCallIndication((String[])ret);
+                rewindAndReplace = true;
+		newResponseCode = RIL_UNSOL_RESPONSE_CALL_STATE_CHANGED;
+		break;
+
+            case RIL_UNSOL_RESPONSE_PS_NETWORK_STATE_CHANGED:
+                rewindAndReplace = true;
+                newResponseCode = RIL_UNSOL_RESPONSE_VOICE_NETWORK_STATE_CHANGED;
+                break;
+
+            case RIL_UNSOL_SIM_INSERTED_STATUS:
+            case RIL_UNSOL_SIM_MISSING:
+            case RIL_UNSOL_SIM_PLUG_OUT:
+            case RIL_UNSOL_SIM_PLUG_IN:
+                rewindAndReplace = true;
+                newResponseCode = RIL_UNSOL_RESPONSE_SIM_STATUS_CHANGED;
+                break;
+
+            case RIL_UNSOL_SMS_READY_NOTIFICATION:
+                /*if (mGsmSmsRegistrant != null) {
+                    mGsmSmsRegistrant
+                        .notifyRegistrant();
+                }*/
+                break;
+            case RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED:
+		// intercept and send GPRS_TRANSFER_TYPE and GPRS_CONNECT_TYPE to RIL
+	        setRadioStateFromRILInt(p.readInt());
+		rewindAndReplace = true;
+		newResponseCode = RIL_UNSOL_RESPONSE_RADIO_STATE_CHANGED;
+		break;
+            default:
+                Rlog.i(LOG_TAG, "Unprocessed unsolicited known MTK response: " + response);
+        }
+
+        if (rewindAndReplace) {
+            Rlog.w(LOG_TAG, "Rewriting MTK unsolicited response to " + newResponseCode);
+
+            // Rewrite
+            p.setDataPosition(dataPosition);
+            p.writeInt(newResponseCode);
+
+            // And rewind again in front
+            p.setDataPosition(dataPosition);
+
+            super.processUnsolicited(p);
+        }
+    }
+    
     static String
     requestToString(int request) {
 /*
