@@ -894,19 +894,6 @@ static int registered = 0;
         send(rr);
     }
     
-    protected Object
-    responseSignalStrength(Parcel p) {
-        SignalStrength s = SignalStrength.makeSignalStrengthFromRilParcel(p);
-	return new SignalStrength(s.getGsmSignalStrength(), 
-				  s.getGsmBitErrorRate(),
-				  s.getCdmaDbm(), 
-				  s.getCdmaEcio(),
-				  s.getEvdoDbm(), 
-				  s.getEvdoEcio(),
-				  s.getEvdoSnr(),
-				  true);
-    }
-    
     private void setRadioStateFromRILInt (int stateCode) {
         switch (stateCode) {
 	case 0: case 1: break; // radio off
